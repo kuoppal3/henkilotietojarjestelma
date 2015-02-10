@@ -3,9 +3,10 @@
         <h1>Henkilötietojärjestelmä</h1>
         <a class="btn btn-success" href="/people">Listaa kaikki henkilöt</a>
         
-        <a class="btn btn-warning">Poista kaikki henkilöt</a> 
+        <a class="btn btn-warning" onclick="personDeleteAll()">Poista kaikki henkilöt</a> 
         
-        <!-- form to add a person -->
+        <h3>Henkilön lisääminen</h3>
+        <!-- form for adding a person -->
         <form action="/people" method="POST">
             <label for="etunimi">Etunimi:</label>
             <input name="etunimi"> <br>

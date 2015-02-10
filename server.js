@@ -47,7 +47,7 @@ app.get('/people', people.list);
 app.post('/people', people.add);
 app.delete('/people', people.deleteAll);
 
-app.get('/people/:id', people.getOne);
+app.get('/people/:id', people.getOneToEdit);
 app.put('/people/:id', people.edit);
 app.delete('/people/:id', people.deleteOne);
 

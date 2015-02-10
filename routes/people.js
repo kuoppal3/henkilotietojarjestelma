@@ -1,6 +1,16 @@
+var Person = require('.././persondb');
+
 // Lists everybody
 exports.list = function(req, res) {
-    
+    // Find all the people from
+    Person.fetchAll(function(err, people) {
+        if(err) { throw err; }
+        if(people === undefined) {
+            res.render('people', { people: [] });
+        } else {
+            res.render('people', { people: people });
+        }
+    });
 };
 
 // Validates person and adds it to mongodb 
@@ -40,7 +50,11 @@ exports.add = function(req, res) {
 
 // Deletes all the people from mongodb
 exports.deleteAll = function(req, res) {
-    
+    Person.deleteAll(function(err) {
+        if(err) { throw err; }
+        res.status(200);
+        res.send('Deleted successfully');
+    });
 };
 
 // Deletes one person from mongodb

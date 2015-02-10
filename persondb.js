@@ -26,8 +26,8 @@ function Person(obj) {
 
 Person.prototype.add = function(fn) {
     var that = this;
-    //new person = personModel({ fir)
     
+    // New personmodel
     var person = new personModel({ firstName: this.firstName,
                                    lastName: this.lastName,
                                    email: this.email,
@@ -35,19 +35,24 @@ Person.prototype.add = function(fn) {
                                    birthDate: this.birthDate
     });
     
+    // Save model to the db
     person.save(function(err, person) {
         if(err) { fn(err); }
         fn(null, person);
     });
 };
 
+//
 // Methods for person db
+//
 Person.delete = function(fn) {
     
 };
 
 Person.deleteAll = function(fn) {
-    
+    personModel.remove({}, function(err) {
+        if(err) { fn(err); }
+    });
 };
 
 Person.fetchAll = function(fn) {
