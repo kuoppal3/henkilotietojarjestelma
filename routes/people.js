@@ -11,6 +11,20 @@ exports.add = function(req, res) {
     var email = req.body.sahkoposti;
     var birthDate = req.body.syntymaaika;
     
+    // New person
+    var newPerson = new Person({
+        firstName: firstName,
+        lastName: lastName,
+        identityNumber: identityNumber,
+        email: email,
+        birthDate: birthDate
+    });
+    
+    // Add it to mongodb
+    newPerson.add(function(err, person){
+        if(err) throw err;
+    });
+    
     // First and last name field validation
 
     // Last name field validation
