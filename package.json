@@ -1,0 +1,13 @@
+{
+  "name": "henkilotietojarjestelma",
+  "version": "0.0.0",
+  "description": "Palvelinsovellus henkilotietojen kasittelyyn yksinkertaisella web-kayttoliittymalla",
+  "main": "server.js",
+  "repository": "",
+  "author": "Ville Kuoppala <ville.t.kuoppala@student.tut.fi>",
+  "dependencies": {
+    "ejs": "^2.2.4",
+    "express": "^4.11.2",
+    "mongoose": "^3.8.23"
+  }
+}

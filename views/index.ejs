@@ -1,0 +1,30 @@
+    <% include header %>
+    <body>
+        <h1>Henkilötietojärjestelmä</h1>
+        <a class="btn btn-success" href="/people">Listaa kaikki henkilöt</a>
+        
+        <a class="btn btn-warning">Poista kaikki henkilöt</a> 
+        
+        <!-- form to add a person -->
+        <form action="/people" method="POST">
+            <label for="etunimi">Etunimi:</label>
+            <input name="etunimi"> <br>
+
+            <label for="sukunimi">Sukunimi:</label>
+            <input name="sukunimi"> <br>
+
+            <label for="">Sähköposti:</label>
+            <input name="sahkoposti"> <br>
+
+            <label for="henkilotunnus">Henkilötunnus:</label>
+            <input name="henkilotunnus"> <br>
+
+            <label for="syntymaaika">Syntymäaika:</label>
+            <input name="syntymaaika"> <br>
+
+            <input type="submit" class="btn btn-success" value="Lisää henkilö">
+        </form>            
+    </body>
+    
+<!-- close html from header -->
+</html>
