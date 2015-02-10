@@ -1,3 +1,4 @@
 ## Henkilötietojärjestelmä
-Järjestelmään pystyy tallentamaan henkilötietoja. Sivusto osaa
-listata kaikkien henkilötiedot sekä poistaa ja muokata yksittäisen henkilön tietoja.
+Henkilötietojärjestelmä yksinkertaisella käyttöliittymällä, johon pystyy tallentamaan henkilötietoja.
+Sivusto osaa listata kaikkien tallennettujen henkilöiden henkilötiedot sekä poistaa ja
+muokata yksittäisen henkilön tietoja.
