@@ -63,7 +63,20 @@ exports.deleteOne = function(req, res) {
 };
 
 // Gets one person
-exports.getOne = function(req, res) {
+exports.getOneToEdit = function(req, res) {
+    // Get one person from database
+    var personId = req.params.id;
+    console.log(personId);
+    
+    Person.fetchOne(personId, function(err, personToEdit) {
+        if(err) { throw err; }
+        if(personToEdit === undefined) {
+            
+        } else {
+            res.render('person', { person: personToEdit });
+        }
+    });
+    
     
 };
 

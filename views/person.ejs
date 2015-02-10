@@ -1,4 +1,23 @@
 <% include header %>
+    <h1> Henkilön tietojen muokkaus </h1>
+    <!-- form for adding a person -->
+    <form action="/people" method="PUT">
+        <label for="etunimi">Etunimi:</label>
+        <input name="etunimi" value="<%= person[0].firstName %>"> <br>
 
+        <label for="sukunimi">Sukunimi:</label>
+        <input name="sukunimi" value="<%= person[0].lastName %>"> <br>
+
+        <label for="">Sähköposti:</label>
+        <input name="sahkoposti" value="<%= person[0].email %>"> <br>
+
+        <label for="henkilotunnus">Henkilötunnus:</label>
+        <input name="henkilotunnus" value="<%= person[0].identityNumber %>"> <br>
+
+        <label for="syntymaaika">Syntymäaika:</label>
+        <input name="syntymaaika" value="<%= person[0].birthDate %>"> <br>
+
+        <input type="submit" class="btn btn-success" value="Tallenna henkilön tiedot">
+    </form>    
 <!-- close html from header -->
 </html>

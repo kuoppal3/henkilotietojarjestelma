@@ -67,6 +67,17 @@ Person.fetchAll = function(fn) {
     });
 };
 
+Person.fetchOne = function(personId, fn) {
+    personModel.find({ "_id": personId }, function(err, person) {
+        if(err) { fn(err); }
+        if(person.length === 0) {
+            fn();
+        } else {
+            fn(null, person);
+        }
+    });
+};
+
 Person.edit = function(fn) {
     
 };

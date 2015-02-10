@@ -2,7 +2,7 @@
     <h1>Kaikki henkilöt</h1>
     <% for(var i = 0; i < people.length; ++i) { %>
         <h4><%= people[i].firstName + " " + people[i].lastName %> 
-        <a class="btn btn-default" id="<%= people[i]._id %>" onclick="personEdit(this.id)">Muokkaa</a>
+        <a class="btn btn-default" href="/people/<%= people[i]._id %>">Muokkaa</a>
         <a class="btn btn-warning" id="<%= people[i]._id %>" onclick="personDelete(this.id)">Poista</a> </h4>
         
         Sähköposti: <%= people[i].email %> <br>
