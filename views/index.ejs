@@ -7,23 +7,23 @@
         
         <h3>Henkilön lisääminen</h3>
         <!-- form for adding a person -->
-        <form action="/people" method="POST">
+        <form id="addForm">
             <label for="etunimi">Etunimi:</label>
-            <input name="etunimi"> <br>
+            <input id="firstName" name="etunimi"> <br>
 
             <label for="sukunimi">Sukunimi:</label>
-            <input name="sukunimi"> <br>
+            <input id="lastName" name="sukunimi"> <br>
 
             <label for="">Sähköposti:</label>
-            <input name="sahkoposti"> <br>
+            <input id="email" name="sahkoposti"> <br>
 
             <label for="henkilotunnus">Henkilötunnus:</label>
-            <input name="henkilotunnus"> <br>
+            <input id="identityNumber" name="henkilotunnus"> <br>
 
             <label for="syntymaaika">Syntymäaika:</label>
-            <input name="syntymaaika"> <br>
+            <input id="birthDate" name="syntymaaika"> <br>
 
-            <input type="submit" class="btn btn-success" value="Lisää henkilö">
+            <input onclick="personAdd()" class="btn btn-success" value="Lisää henkilö">
         </form>            
     </body>
     

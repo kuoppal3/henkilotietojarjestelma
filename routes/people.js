@@ -15,12 +15,13 @@ exports.list = function(req, res) {
 
 // Validates person and adds it to mongodb 
 exports.add = function(req, res) {
-    var firstName = req.body.etunimi;
-    var lastName = req.body.sukunimi;
-    var identityNumber = req.body.henkilotunnus;
-    var email = req.body.sahkoposti;
-    var birthDate = req.body.syntymaaika;
     
+    var firstName = req.body.firstName;
+    var lastName = req.body.lastName;
+    var identityNumber = req.body.identityNumber;
+    var email = req.body.email;
+    var birthDate = req.body.birthDate;
+
     // New person
     var newPerson = new Person({
         firstName: firstName,
@@ -33,6 +34,8 @@ exports.add = function(req, res) {
     // Add it to mongodb
     newPerson.add(function(err, person){
         if(err) throw err;
+        res.status(200);
+        res.send('Person added successfully');
     });
     
     // First and last name field validation
@@ -59,7 +62,12 @@ exports.deleteAll = function(req, res) {
 
 // Deletes one person from mongodb
 exports.deleteOne = function(req, res) {
-    
+    var personId = req.params.id;
+    Person.delete(personId, function(err) {
+        if(err) { throw err; }
+        res.status(200);
+        res.send('Deleted successfully');
+    });
 };
 
 // Gets one person
@@ -82,6 +90,22 @@ exports.getOneToEdit = function(req, res) {
 
 // Edits person
 exports.edit = function(req, res) {
+    var personId = req.body.id;
+    var firstName = req.body.firstName;
+    var lastName = req.body.lastName;
+    var identityNumber = req.body.identityNumber;
+    var email = req.body.email;
+    var birthDate = req.body.birthDate;
+    // Validate values
     
+    // Find person from db
+    Person.edit(personId, firstName, lastName, identityNumber, email,
+                birthDate, function(err) {
+        if(err) { throw err; }
+        // Respond if edited successfully
+        res.status(200);
+        res.send('Person edited successfully');
+    });
+
 };
 

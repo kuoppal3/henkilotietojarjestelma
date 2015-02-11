@@ -45,8 +45,11 @@ Person.prototype.add = function(fn) {
 //
 // Methods for person db
 //
-Person.delete = function(fn) {
-    
+Person.delete = function(personId, fn) {
+    personModel.remove({"_id": personId}, function(err) {
+        if(err) { fn(err); }
+        fn(null);
+    });
 };
 
 Person.deleteAll = function(fn) {
@@ -78,6 +81,22 @@ Person.fetchOne = function(personId, fn) {
     });
 };
 
-Person.edit = function(fn) {
-    
+Person.edit = function(personId, firstName, lastName, identityNumber, email,
+                       birthDate, fn) {
+    personModel.findOne({ "_id": personId }, function(err, person) {
+        if(err) { fn(err); }
+        if(person.length === 0) {
+            
+        } else {
+            person.firstName = firstName;
+            person.lastName = lastName;
+            person.identityNumber = identityNumber;
+            person.email = email;
+            person.birthDate = birthDate;
+            person.save(function(err) {
+                if(err) { fn(err); }
+                fn(null, person);
+            });
+        }
+    });
 };
