@@ -84,8 +84,6 @@ exports.getOneToEdit = function(req, res) {
             res.render('person', { person: personToEdit });
         }
     });
-    
-    
 };
 
 // Edits person
