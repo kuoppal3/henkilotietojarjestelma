@@ -37,18 +37,6 @@ exports.add = function(req, res) {
         res.status(200);
         res.send('Person added successfully');
     });
-    
-    // First and last name field validation
-
-    // Last name field validation
-    
-    // Identity number validation (Finnish form)
-    
-    // Email validation
-    
-    // Birthdate validation (have to be form like 1.14.1954)
-    
-    
 };
 
 // Deletes all the people from mongodb
@@ -94,8 +82,7 @@ exports.edit = function(req, res) {
     var identityNumber = req.body.identityNumber;
     var email = req.body.email;
     var birthDate = req.body.birthDate;
-    // Validate values
-    
+ 
     // Find person from db
     Person.edit(personId, firstName, lastName, identityNumber, email,
                 birthDate, function(err) {

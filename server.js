@@ -27,7 +27,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Database connection
 var mongoose = require("mongoose");
 // Local db
-mongoose.connect('mongodb://' + process.env.IP + '/data');
+//mongoose.connect('mongodb://' + process.env.IP + '/data');
+
+// Azure mongolab db
+mongoose.connect('mongodb://' + process.env.CUSTOMCONNSTR_MONGOLAB_URI + '/data');
 
 var db = mongoose.connection;
 db.once('open', function callback () {

@@ -1,4 +1,5 @@
 // Ajax calls for person
+// POSTs person's data to the server
 function personAdd() {
     var data = {
                 firstName: document.getElementById('firstName').value,
@@ -19,6 +20,7 @@ function personAdd() {
     });
 }
 
+// PUTs person's data to server
 function personEdit(personId) {
     // This data is sent to the server
     var data = { id: personId,
@@ -40,6 +42,7 @@ function personEdit(personId) {
     });
 }
 
+// DELETEs one person from the server
 function personDelete(personId) {
     $.ajax({
         url: '/people/' + personId,
@@ -51,6 +54,7 @@ function personDelete(personId) {
     });
 }
 
+// DELETEs all the people from the server
 function personDeleteAll() {
     $.ajax({
         url: '/people',

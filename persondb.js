@@ -24,9 +24,10 @@ function Person(obj) {
     this.birthDate = obj.birthDate;
 }
 
+// Adds new person
 Person.prototype.add = function(fn) {
     var that = this;
-    // If data is valid, find person and edit it
+    // If data is valid, add person to mongodb
     Person.validateData(that.firstName, that.lastName, that.identityNumber,
                         that.email, that.birthDate, function(err, isValid) {
         if(err) { throw err; }
@@ -51,6 +52,8 @@ Person.prototype.add = function(fn) {
 //
 // Methods for person db
 //
+
+// Deletes one person from db
 Person.delete = function(personId, fn) {
     personModel.remove({"_id": personId}, function(err) {
         if(err) { fn(err); }
@@ -58,12 +61,14 @@ Person.delete = function(personId, fn) {
     });
 };
 
+// Deletes all the people from the db
 Person.deleteAll = function(fn) {
     personModel.remove({}, function(err) {
         if(err) { fn(err); }
     });
 };
 
+// Finds all from the db
 Person.fetchAll = function(fn) {
     personModel.find({}, function(err, people) {
         if(err) { fn(err); }
@@ -76,6 +81,7 @@ Person.fetchAll = function(fn) {
     });
 };
 
+// Finds one person from the db
 Person.fetchOne = function(personId, fn) {
     personModel.find({ "_id": personId }, function(err, person) {
         if(err) { fn(err); }
@@ -87,9 +93,10 @@ Person.fetchOne = function(personId, fn) {
     });
 };
 
+// Edits a person and checks if data is valid 
 Person.edit = function(personId, firstName, lastName, identityNumber, email,
                        birthDate, fn) {
-    // If data is valid, find person and edit it
+    // If data is valid, find person and save edited person
     Person.validateData(firstName, lastName, identityNumber, email, birthDate, function(err, isValid) {
         if(err) { throw err; }
         if(isValid) {
@@ -117,19 +124,20 @@ Person.edit = function(personId, firstName, lastName, identityNumber, email,
 
 };
 
+// Validates person's name, identity number, email and birth date
 Person.validateData = function(firstName, lastName, identityNumber, email,
                        birthDate, fn) {
     if(firstName === '' || lastName === '' || identityNumber === '' ||
        email === '' || birthDate === '') {
         fn(null, false); 
-    // Simple regex for email
+    // Very simple regex for email
     } else if(!email.match(/\S+@\S+\.\S+/)) {
         fn(null, false);
     // Parse date using JavaScript Date-object
     } else if(!parseDate(birthDate)) {
         fn(null, false);               
     // Regex for Finnish identity number. This just checks that the form is okay,
-    // but doesn't check if number matches with birth date
+    // but it doesn't check if number matches with birth date
     } else if(!identityNumber.match(/\d{6}[+-A]\d{3}\w/)) {
         fn(null, false);
     // Otherwise the data is valid
