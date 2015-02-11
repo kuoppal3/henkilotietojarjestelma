@@ -24,12 +24,6 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Middleware for 404
-//app.use(function(req, res) {
-// res.status(400);
-//  res.render('404');
-//});
-
 // Database connection
 var mongoose = require("mongoose");
 // Local db

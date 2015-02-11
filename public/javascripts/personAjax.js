@@ -57,7 +57,7 @@ function personDeleteAll() {
         type: 'DELETE',
         success: function(result) {
           // Refresh site
-          window.location.href = "/";
+          window.location.href = "/people";
         }
     });
 }

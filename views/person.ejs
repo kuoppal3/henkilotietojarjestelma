@@ -15,7 +15,7 @@
         <input id="identityNumber" name="henkilotunnus" value="<%= person[0].identityNumber %>"> <br>
 
         <label for="syntymaaika">Syntymäaika:</label>
-        <input id="birthDate" name="syntymaaika" value="<%= person[0].birthDate %>"> <br>
+        <input id="birthDate" name="syntymaaika" value="<%= person[0].birthDate %>"> (muodossa pp.kk.vvvv)<br>
 
         <input id="<%= person[0]._id %>" class="btn btn-success" onclick="personEdit(this.id)" value="Tallenna henkilön tiedot">
     </form>    
